@@ -29,6 +29,8 @@
         }
         #list img {
             float: left;
+            width:600px;
+            height: 400px;
         }
         #buttons {
             position: absolute;
@@ -46,10 +48,10 @@
             height: 10px;
             border-radius: 5px;
             /*background-color: #333;*/
-            margin-right: 5px;
+            margin-right: 8px;
         }
         #buttons .on {
-            background: orange;
+            background-color: rgba(150,150,150,.7);
         }
         .arrow {
             cursor: pointer;

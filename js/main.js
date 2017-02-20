@@ -2,12 +2,21 @@
 window.onload = function () {
     var container = document.getElementById('container');
     var list = document.getElementById('list');
+    var imgs = list.getElementsByTagName('img');
     var buttons = document.getElementById('buttons').getElementsByTagName('span');
     var prev = document.getElementById('prev');
     var next = document.getElementById('next');
     var index = 1;
+    var len = imgs.length;
     var animated = false;  //是否在切换中
     var timer;
+    var firstImg = imgs[0].cloneNode(false);
+    var lastImg  = imgs[imgs.length-1].cloneNode(false);
+
+    //在第一张图片前插入最后一个图片
+    //在最后一张图片前面插入第一张图片
+    list.appendChild(firstImg);
+    list.insertBefore(lastImg, imgs[0]);
 
     function showButton() {
         for(var i=0; i<buttons.length; i++){
@@ -15,9 +24,7 @@ window.onload = function () {
                 buttons[i].className = '';
                 break;
             }
-
         }
-
         buttons[index -1 ].className = "on";
     }
 
@@ -25,7 +32,7 @@ window.onload = function () {
         if(animated) {
             return;
         }
-        if(index === 5){
+        if(index === len){
             index =1;
         }
         else
@@ -41,7 +48,7 @@ window.onload = function () {
             return;
         }
         if(index === 1){
-            index =5;
+            index =len;
         }
         else
         {
@@ -56,12 +63,11 @@ window.onload = function () {
             if(this.className == 'on'){
                 return;
             }
+            if(animated)
+            return;
             var myIndex = parseInt(this.getAttribute('index'));
             var offset = -600 * (myIndex - index );
-            if(!animated) {
-                animate(offset);
-            }
-            
+            animate(offset);
             index = myIndex;
             showButton();
             //debugger;
@@ -73,7 +79,7 @@ window.onload = function () {
     function animate(offset){
         animated  = true;
         var newLeft = parseInt(list.style.left) + offset;
-        var time = 600; //位移总时间
+        var time = config.timeChange; //位移总时间
         var interval = 10;//位移间隔时间
         var speed = offset/(time/interval); //每次位移量
 
@@ -98,7 +104,7 @@ window.onload = function () {
      function play() {
          timer = setInterval(function(){
              next.onclick();
-         },3000);
+         },config.timeInterval);
      }
         
     function stop() {
