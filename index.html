@@ -3,37 +3,28 @@
 <head>
     <meta charset="UTF-8">
     <title>焦点轮播图</title>
-    <style>
-        * {
-            margin: 0; 
-            padding: 0; 
-            text-decoration: none;
-        }
-        body { 
-            padding: 20px;
-        }
-        #container {
-            width: 600px;
-            height: 400px;
-            border: 3px solid #333;
-            margin: 0 auto;
-        }
-    </style>
+    <link rel="stylesheet" href="./css/main.css" type="text/css" />
 </head>
 <body>
     <div id="container">
-        <div id="list" >
+        <div id="list" style="left: -600px;" >
             <img src="img/5.jpg" alt="1" />
+            <img src="img/1.jpg" alt="1" />
+            <img src="img/2.jpg" alt="2" />
+            <img src="img/3.jpg" alt="3" />
+            <img src="img/4.jpg" alt="4" />
+            <img src="img/5.jpg" alt="5" />
+            <img src="img/1.jpg" alt="5" />
         </div>
         <div id="buttons">
-            <span index="1" ></span>
+            <span index="1" class="on" ></span>
             <span index="2" ></span>
             <span index="3" ></span>
             <span index="4" ></span>
             <span index="5" ></span>
         </div>
-        <a id="prev">&lt;</a>
-        <a id="next">&gt;</a>
+        <a href="javascript:;" class="arrow" id="prev">&lt;</a>
+        <a href="javascript:;" class="arrow" id="next">&gt;</a>
     </div>
 </body>
 </html>
